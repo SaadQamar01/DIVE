@@ -22,7 +22,7 @@ function HeaderLinks({ ...props }) {
   const { classes } = props;
   return (
     <List className={classes.list}>
-      <ListItem className={classes.listItem}>
+      {/* <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           buttonText="Components"
@@ -40,22 +40,45 @@ function HeaderLinks({ ...props }) {
               target="_blank"
               className={classes.dropdownLink}
             >
-              Documentation
+              Register
             </a>
           ]}
         />
-      </ListItem>
-      <ListItem className={classes.listItem}>
+      </ListItem> */}
+      <ListItem  className={classes.listItem}>
         <Button
+        style={{fontSize:15}}
           href="https://www.creative-tim.com/product/material-kit-react"
           color="transparent"
           target="_blank"
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Download
+           REGISTER
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
+        <Button
+        style={{fontSize:15}}
+          href="https://www.creative-tim.com/product/material-kit-react"
+          color="transparent"
+          target="_blank"
+          className={classes.navLink}
+        >
+           LOGIN
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+        style={{fontSize:15}}
+          href="https://www.creative-tim.com/product/material-kit-react"
+          color="transparent"
+          target="_blank"
+          className={classes.navLink}
+        >
+           UNLOCK
+        </Button>
+      </ListItem>
+      {/* <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-twitter"
           title="Follow us on twitter"
@@ -105,7 +128,7 @@ function HeaderLinks({ ...props }) {
             <i className={classes.socialIcons + " fab fa-instagram"} />
           </Button>
         </Tooltip>
-      </ListItem>
+      </ListItem> */}
     </List>
   );
 }

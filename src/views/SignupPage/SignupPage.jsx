@@ -65,8 +65,8 @@ class SignupPage extends React.Component {
               <GridItem xs={12} sm={12} md={4}>
                 <Card className={classes[this.state.cardAnimaton]}>
                   <form className={classes.form}>
-                    <CardHeader color="primary" className={classes.cardHeader}>
-                      <h4>Sign up</h4>
+                    <CardHeader color="warning" className={classes.cardHeader}>
+                      <h4>REGISTER</h4>
                       <div className={classes.socialLine}>
                         <Button
                           justIcon
@@ -162,15 +162,15 @@ class SignupPage extends React.Component {
                         }}
                       />
                     </CardBody>
-                    <Link to={"/"} className={{}}>
-                      <Button simple color="primary" size="sm" style={{ marginLeft: '60%' }}>
+                    {/* <Link to={"/"} className={{}}>
+                      <Button simple color="warning" size="sm" style={{ marginLeft: '60%' }}>
                         Already Account?
                       </Button>
-                    </Link>
+                    </Link> */}
                     <CardFooter className={classes.cardFooter}>
                       <Link to={"/landing-page"} className={{}}>
-                        <Button simple color="primary" size="lg">
-                          Sign up
+                        <Button simple color="warning" size="lg">
+                          GET STARTED
                       </Button>
                       </Link>
                     </CardFooter>
