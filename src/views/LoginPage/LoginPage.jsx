@@ -179,7 +179,7 @@ class LoginPage extends React.Component {
                       </Button>
                     </Link> */}
                     <CardFooter className={classes.cardFooter}>
-                      <Link to={"/landing-page"} className={{}}>
+                      <Link to={"/profile-page"} className={{}}>
                         <Button simple color="warning" size="lg">
                           DIVE IN
                       </Button>

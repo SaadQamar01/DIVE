@@ -42,7 +42,7 @@ class ProfilePage extends React.Component {
     const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
     return (
       <div>
-        <Header
+        {/* <Header
           color="transparent"
           brand="DIVE"
           rightLinks={<HeaderLinks />}
@@ -52,11 +52,11 @@ class ProfilePage extends React.Component {
             color: "white"
           }}
           {...rest}
-        />
+        /> */}
         <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div>
-            <div className={classes.container}>
+            <div>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={6}>
                   <div className={classes.profile}>
@@ -91,150 +91,22 @@ class ProfilePage extends React.Component {
                   </div>
                 </GridItem>
               </GridContainer>
-              <div className={classes.description}>
-                <hr />
-              </div>
-
+              <GridContainer >
+                <GridItem sm={12} sm={12} md={6}>
+                  <Button>profile</Button>
+                  <Button>profilio</Button>
+                  <Button>Connections</Button>
+                  <Button>Connection</Button>
+                </GridItem>
+              </GridContainer>
               <GridContainer justify="center">
-
-                {/* <GridItem xs={12} sm={12} md={12} className={classes.navWrapper}> */}
-                  <NavPills
-                    alignCenter
-                    color="warning"
-                    tabs={[
-                      {
-                        tabButton: "Profile",
-                        tabContent: (
-                          <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={4}>
-                              {/* <GridItem xs={12} sm={12} md={2}> */}
-                              <EditableSection />
-
-                            </GridItem>
-                            <GridItem xs={12} sm={12} md={8} >
-                              {/* <GridItem justify="center">
-                                <Button color="primary" size='large' >Add a Project</Button>
-                                <Button color="primary" size='large' >Add a Resume</Button>
-                              </GridItem>
-                              <GridItem >
-                                <Button color="primary" size='large' >Add a course</Button>
-                                <Button color="primary" size='large' >Add on Accomplishment</Button>
-                              </GridItem> */}
-            </GridItem>
-                          </GridContainer>
-                        )
-                      },
-                      {
-                        tabButton: "Portfolio",
-                        tabContent: (
-                          <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={4}>
-                              <img
-                                alt="..."
-                                src={work1}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={work2}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={work3}
-                                className={navImageClasses}
-                              />
-                            </GridItem>
-                            <GridItem xs={12} sm={12} md={4}>
-                              <img
-                                alt="..."
-                                src={work4}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={work5}
-                                className={navImageClasses}
-                              />
-                            </GridItem>
-                          </GridContainer>
-                        )
-                      },
-                      {
-                        tabButton: "Connections",
-                        tabContent: (
-                          <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={4}>
-                              <img
-                                alt="..."
-                                src={work4}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={studio3}
-                                className={navImageClasses}
-                              />
-                            </GridItem>
-                            <GridItem xs={12} sm={12} md={4}>
-                              <img
-                                alt="..."
-                                src={work2}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={work1}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={studio1}
-                                className={navImageClasses}
-                              />
-                            </GridItem>
-                          </GridContainer>
-                        )
-                      },
-                      {
-                        tabButton: "Connections",
-                        tabContent: (
-                          <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={4}>
-                              <img
-                                alt="..."
-                                src={work4}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={studio3}
-                                className={navImageClasses}
-                              />
-                            </GridItem>
-                            <GridItem xs={12} sm={12} md={4}>
-                              <img
-                                alt="..."
-                                src={work2}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={work1}
-                                className={navImageClasses}
-                              />
-                              <img
-                                alt="..."
-                                src={studio1}
-                                className={navImageClasses}
-                              />
-                            </GridItem>
-                          </GridContainer>
-                        )
-                      }
-                    ]}
-                  />
-                {/* </GridItem> */}
+                <GridItem s={12} sm={12} md={4}>
+                  <EditableSection />
+                  {/* <div>sidebar</div> */}
+                </GridItem>
+                <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
+                  nav warapper
+                </GridItem>
               </GridContainer>
             </div>
           </div>
