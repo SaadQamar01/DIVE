@@ -168,7 +168,7 @@ class SignupPage extends React.Component {
                       </Button>
                     </Link> */}
                     <CardFooter className={classes.cardFooter}>
-                      <Link to={"/landing-page"} className={{}}>
+                      <Link to={"/dashboard"} className={{}}>
                         <Button simple color="warning" size="lg">
                           GET STARTED
                       </Button>

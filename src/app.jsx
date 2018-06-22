@@ -20,7 +20,6 @@ import indexRoutes from "routes/index.jsx";
 
 import "assets/scss/material-kit-react.css?v=1.1.0";
 import EditableSection from './views/EditableSection/EditableSection';
-import Main from './main'
 var hist = createBrowserHistory();
 // import image from "assets/img/bg7.jpg";
 // import { Link } from "react-router-dom";
@@ -37,6 +36,7 @@ class App extends React.Component {
 
     }
     render() {
+        console.log(hist)
         const { classes, ...rest } = this.props;
         return (
             <div>

@@ -34,55 +34,53 @@ class EditableSection extends React.Component {
         const { classes, ...rest } = this.props;
         return (
             <GridContainer>
-                <GridItem>
+                <GridItem md={10}>
                     <Card>
                         <CardBody>
-<div style={{border:"3px solid black",borderRadius:8}}>
-                            <div style={{ paddingTop:5, fontSize: '20px', color: 'red', fontWeight: 'bold' }}>
-                                Overview
-                    </div>
-                            <div style={{ fontSize: '10' }}>
-                                Work Experience
-                    </div>
-                            <div style={{ fontSize: '10' }}>
-                                Country
-                    </div>
-                            <div >
-                                <Button justIcon link >
-                                    <i className={"fab fa-instagram"} />
-                                </Button>
-                                <Button justIcon link >
-                                    <i className={"fab fa-instagram"} />
-                                </Button>
-                                <Button justIcon link >
-                                    <i className={"fab fa-instagram"} />
-                                </Button>
-                            </div>
-                            <div>
-                                <Button link style={{ width: 75 }}>
-                                    Projects <span style={{ marginBottom: 7, padding: 5, fontSize: 15, color: 'red', fontWeight: 'bold' }} class="badge badge-default" >4</span>
-                                </Button>
-                                <Button link style={{ width: 90 }}>
-                                    Skills <span style={{ marginBottom: 7, padding: 3, fontSize: 15, color: 'red', fontWeight: 'bold' }} class="badge badge-default" >4</span>
-                                </Button>
-                                <Button link style={{ width: 90 }}>
-                                    Connections <span style={{ marginBottom: 7, padding: 3, fontSize: 15, color: 'red', fontWeight: 'bold' }} class="badge badge-default" >4</span>
-                                </Button>
-                            </div>
+                            <div style={{ border: "3px solid black", borderRadius: 8, textAlign: "center" }}>
+                                <div style={{ paddingTop: 5, fontSize: '15px', color: 'red', fontWeight: 'bold' }}>
+                                    Overview
+                                </div>
+                                <div style={{ fontSize: '8' }}>
+                                    Work Experience
+                                </div>
+                                <div style={{ fontSize: '8' }}>
+                                    Country
+                                </div>
+                                <div >
+                                    <Button justIcon link >
+                                        <i className={"fab fa-instagram"} />
+                                    </Button>
+                                    <Button justIcon link >
+                                        <i className={"fab fa-instagram"} />
+                                    </Button>
+                                    <Button justIcon link >
+                                        <i className={"fab fa-instagram"} />
+                                    </Button>
+                                </div>
+                                <div>
+                                    <Button link style={{ width: 75 }}>
+                                        Projects <span style={{ marginBottom: 7, padding: 5, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >4</span>
+                                    </Button>
+                                    <Button link style={{ width: 90 }}>
+                                        Skills <span style={{ marginBottom: 7, padding: 3, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >4</span>
+                                    </Button>
+                                    <Button link style={{ width: 90 }}>
+                                        Connections <span style={{ marginBottom: 7, padding: 3, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >4</span>
+                                    </Button>
+                                </div>
                             </div>
 
-                            <button type='button' data-container="body" data-toggle="popover" data-placement='dsjkhfjksdhfjk' color="primary" style={{fontWeight:'bold',width:'100%',backgroundColor:'white',color:'orange',border:"3px solid black"}} size='regular' >Calender</button>
-                            <Button color="primary" style={{fontWeight:'bold',width:'100%',backgroundColor:'white',color:'orange',border:"3px solid black"}} size='large' >Education</Button>
-                            <Button color="primary"style={{fontWeight:'bold',width:'100%',backgroundColor:'white',color:'orange',border:"3px solid black"}} size='large' >Work Experience</Button>
-                            <Button color="primary" style={{fontWeight:'bold',width:'100%',backgroundColor:'white',color:'orange',border:"3px solid black"}}size='large' >Skills</Button>
-                            <Button color="primary"  style={{fontWeight:'bold',width:'100%',backgroundColor:'white',color:'orange',border:"3px solid black"}}size='large' >Referals</Button>
-                            <Button color="primary" style={{fontWeight:'bold',width:'100%',backgroundColor:'white',color:'orange',border:"3px solid black"}}size='large' >Private: Jobs</Button>
+                            {/* <button type='button' data-container="body" data-toggle="popover" data-placement='dsjkhfjksdhfjk' color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='regular' >Calender</button> */}
+                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Calender</Button>
+                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Education</Button>
+                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Work Experience</Button>
+                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Skills</Button>
+                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Referals</Button>
+                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Private: Jobs</Button>
                         </CardBody>
-                         </Card>
-
-
+                    </Card>
                 </GridItem>
-
             </GridContainer>
         )
     }
