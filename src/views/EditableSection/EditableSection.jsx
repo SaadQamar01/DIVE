@@ -1,24 +1,29 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-
-// core components
-
 import Button from "components/CustomButtons/Button.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import profile from "assets/img/faces/christian.png";
+import classNames from "classnames";
 
-import { DialogContent } from "@material-ui/core";
-
-
-import NotificationBadge from 'react-notification-badge';
-import { Effect } from 'react-notification-badge';
+const styles = theme => ({
+    root: {
+        width: '100%',
+    },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
+        textAlign: 'center'
+    },
+});
 
 
 class EditableSection extends React.Component {
@@ -32,6 +37,11 @@ class EditableSection extends React.Component {
 
     render() {
         const { classes, ...rest } = this.props;
+        const imageClasses = classNames(
+            classes.imgRaised,
+            classes.imgRoundedCircle,
+            classes.imgFluid
+        );
         return (
             <GridContainer>
                 <GridItem md={10}>
@@ -70,14 +80,89 @@ class EditableSection extends React.Component {
                                     </Button>
                                 </div>
                             </div>
-
-                            {/* <button type='button' data-container="body" data-toggle="popover" data-placement='dsjkhfjksdhfjk' color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='regular' >Calender</button> */}
-                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Calender</Button>
-                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Education</Button>
-                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Work Experience</Button>
-                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Skills</Button>
-                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Referals</Button>
-                            <Button color="primary" style={{ fontWeight: 'bold', width: '100%', backgroundColor: 'white', color: 'orange', border: "3px solid black" }} size='lg' >Private: Jobs</Button>
+                            <div className={classes.root}>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        <Typography className={classes.heading}>Calender</Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                                            sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        <Typography className={classes.heading}>Education</Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                                            sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        <Typography className={classes.heading}>Work Experience</Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                                            sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        <Typography className={classes.heading}>Skills</Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Typography>
+                                            <div style={{ borderBottom: '3px solid #a9abad'}}>
+                                                <span style={{ fontWeight: 'bold', fontSize: 16 }}> Skill </span>
+                                                | 0 (0 is AVATAR + FULL NAME list industry of endorsers of this skill, if any  endorsers)
+                                            </div>
+                                            <div style={{ borderBottom: '3px solid #a9abad', paddingTop: 10, paddingBottom:10 }}>
+                                                <div style={{ fontWeight: 'bold', fontSize: 16, }}>Skil</div>
+                                                <div>Industry/Major</div>
+                                            </div>
+                                        </Typography>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        <Typography className={classes.heading}>Referals</Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Typography>
+                                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                                <div style={{ flex: 1 }}>
+                                                    <img src={profile} alt="..." className={imageClasses} height={80} width={80} />
+                                                </div>
+                                                <div style={{ flex: 1 }}>
+                                                    <div style={{ fontWeight: 'bold', fontSize: 17 }}> Full Name </div>
+                                                    <div >Position </div>
+                                                    <div> Industry Position/Organization </div>
+                                                    <div> Testimony </div>
+                                                </div>
+                                            </div>
+                                        </Typography>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                        <Typography className={classes.heading}>Private: Jobs</Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                                            sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                            </div>
                         </CardBody>
                     </Card>
                 </GridItem>
@@ -86,4 +171,8 @@ class EditableSection extends React.Component {
     }
 }
 
-export default EditableSection;
+EditableSection.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(EditableSection);
