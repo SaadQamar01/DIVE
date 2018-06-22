@@ -4,7 +4,7 @@ import Portfolio from "views/Portfolio/Portfolio.jsx";
 import Discover from "views/Discover/Discover.jsx";
 
 const mainRoutes = [
-  { path: "/dashboard/profile/", name: "Profile", component: Profile, exact:"exact" },
+  { path: "/dashboard", name: "Profile", component: Profile, exact:"exact" },
   { path: "/dashboard/connections/", name: "Connections", component: Connections },
   { path: "/dashboard/portfolio/", name: "Portfolio", component: Portfolio },
   { path: "/dashboard/discover/", name: "Discover", component: Discover },
