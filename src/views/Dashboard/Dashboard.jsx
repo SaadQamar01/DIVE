@@ -68,10 +68,10 @@ class Dashboard extends React.Component {
                             </GridItem>
                         </GridContainer>
                         <GridContainer>
-                            <GridItem style={{ width: '30%' }}>
+                            <GridItem style={{ width: '33%' }}>
                                 <EditableSection />
                             </GridItem>
-                            <GridItem style={{ width: '70%' }}>
+                            <GridItem style={{ width: '67%' }}>
                                 {mainRoutes.map((prop, key) => {
                                     if (prop.path == '/dashboard') {
                                         return <Route exact path={prop.path} key={key} component={prop.component} />;

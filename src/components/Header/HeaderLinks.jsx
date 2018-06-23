@@ -22,113 +22,42 @@ function HeaderLinks({ ...props }) {
   const { classes } = props;
   return (
     <List className={classes.list}>
-      {/* <ListItem className={classes.listItem}>
-        <CustomDropdown
-          noLiPadding
-          buttonText="Components"
-          buttonProps={{
-            className: classes.navLink,
-            color: "transparent"
-          }}
-          buttonIcon={Apps}
-          dropdownList={[
-            <Link to="/" className={classes.dropdownLink}>
-              All components
-            </Link>,
-            <a
-              href="https://creativetimofficial.github.io/material-kit-react/#/documentation"
-              target="_blank"
-              className={classes.dropdownLink}
-            >
-              Register
-            </a>
-          ]}
-        />
-      </ListItem> */}
-      <ListItem  className={classes.listItem}>
+      <ListItem className={classes.listItem}>
+        <Link to={"/signup-page"}>
+          <Button
+            style={{ fontSize: 15 }}
+            
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+          >
+            REGISTER
+        </Button>
+        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+      <Link to={"/"}>
         <Button
-        style={{fontSize:15}}
-          href="https://www.creative-tim.com/product/material-kit-react"
+          style={{ fontSize: 15 }}
+          color="transparent"
+          target="_blank"
+          className={classes.navLink}
+          >
+          LOGIN
+        </Button>
+          </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          style={{ fontSize: 15 }}
           color="transparent"
           target="_blank"
           className={classes.navLink}
         >
-           REGISTER
+          UNLOCK
         </Button>
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-        style={{fontSize:15}}
-          href="https://www.creative-tim.com/product/material-kit-react"
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-           LOGIN
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-        style={{fontSize:15}}
-          href="https://www.creative-tim.com/product/material-kit-react"
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-           UNLOCK
-        </Button>
-      </ListItem>
-      {/* <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-twitter"
-          title="Follow us on twitter"
-          placement={window.innerWidth > 959 ? "top" : "left"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            href="https://twitter.com/CreativeTim"
-            target="_blank"
-            color="transparent"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-twitter"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-facebook"
-          title="Follow us on facebook"
-          placement={window.innerWidth > 959 ? "top" : "left"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.facebook.com/CreativeTim"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-facebook"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-tooltip"
-          title="Follow us on instagram"
-          placement={window.innerWidth > 959 ? "top" : "left"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.instagram.com/CreativeTimOfficial"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-instagram"} />
-          </Button>
-        </Tooltip>
-      </ListItem> */}
+
     </List>
   );
 }

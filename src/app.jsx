@@ -39,31 +39,31 @@ class App extends React.Component {
         console.log(hist)
         const { classes, ...rest } = this.props;
         return (
-            <div>
-                <Header
-                    color="transparent"
-                    brand="DIVE"
-                    rightLinks={<HeaderLinks />}
-                    fixed
-                    changeColorOnScroll={{
-                        height: 200,
-                        color: "white"
-                    }}
-                    {...rest}
-                />
-                <GridContainer justify='center'>
-                    <GridItem xs={12} sm={12} md={12}>
-                        <Router history={hist}>
+            <Router history={hist}>
+                <div>
+                    <Header
+                        color="transparent"
+                        brand="DIVE"
+                        rightLinks={<HeaderLinks />}
+                        fixed
+                        changeColorOnScroll={{
+                            height: 200,
+                            color: "white"
+                        }}
+                        {...rest}
+                    />
+                    <GridContainer justify='center'>
+                        <GridItem xs={12} sm={12} md={12}>
                             <Switch>
                                 {indexRoutes.map((prop, key) => {
                                     return <Route path={prop.path} key={key} component={prop.component} />;
                                 })}
                             </Switch>
-                        </Router>
-                    </GridItem>
-                </GridContainer>
+                        </GridItem>
+                    </GridContainer>
 
-            </div>
+                </div>
+            </Router>
         );
     }
 }
