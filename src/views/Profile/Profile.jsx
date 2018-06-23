@@ -70,12 +70,16 @@ class Profile extends React.Component {
           </GridItem>
           <GridItem md={4}>
             <div className={classes.rightSider}>
-              <div style={{ marginBottom: '15px' }}>
-                Add an Avatar
-            </div>
-              <div style={{ marginBottom: '15px' }}>
-                Add a cover photo
-            </div>
+              <div style={{ marginBottom: '15px', position: 'relative' }}>
+                <span style={{ display:"inline-block", marginRight: '10px' }}>Add an Avatar</span>
+                <i class="material-icons" style={{ position: 'absolute' }}>check_circle_outline</i>
+              </div>
+              <div style={{ marginBottom: '15px', position: 'relative' }}>
+                <span style={{ display:"inline-block", marginRight: '10px' }}>
+                  Add a cover photo
+                </span>
+                <i class="material-icons" style={{ position: 'absolute' }}>check_circle_outline</i>
+              </div>
             </div>
           </GridItem>
         </GridContainer>

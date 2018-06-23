@@ -37,7 +37,7 @@ const profilePageStyle = {
   },
   rightSider: {
     marginTop:'15px',
-    marginRight:'20px',
+    marginRight:'40px',
     paddingRigh:'15px',
     textAlign:'right'
   }

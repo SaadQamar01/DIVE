@@ -42,7 +42,7 @@ class Portfolio extends React.Component {
           </GridItem>
         </GridContainer>
         <GridContainer>
-          <GridItem style={{ width: '70%' }}>
+          <GridItem>
             {subRoutes.map((prop, key) => {
               if (prop.path == '/dashboard/portfolio/') {
                 return <Route exact path={prop.path} key={key} component={prop.component} />;
