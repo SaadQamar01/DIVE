@@ -12,8 +12,8 @@ import Parallax from "components/Parallax/Parallax.jsx";
 import { Route } from "react-router";
 import { Link, withRouter } from "react-router-dom";
 import profile from "assets/img/faces/christian.png";
-import mainRoutes from "routes/mainRoutes.jsx";
-import profilePageStyle from "assets/jss/material-kit-react/views/profilePage.jsx";
+import mainRoutes from "../../routes/mainRoutes.jsx";
+import profilePageStyle from "../../assets/jss/material-kit-react/views/profilePage.jsx";
 import EditableSection from '../EditableSection/EditableSection';
 
 class Dashboard extends React.Component {
@@ -60,10 +60,10 @@ class Dashboard extends React.Component {
                                             <i className={"fab fa-google-plus"} />
                                         </Button>
                                     </div>
-                                    <Button style={{ backgroundColor: '#fff', color: '#000' }} onClick={() => this.props.history.push('/dashboard')}>Profile</Button>
-                                    <Link to={"/dashboard/portfolio"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Portfolio</Button></Link>
-                                    <Link to={"/dashboard/connections"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Connections</Button></Link>
-                                    <Link to={"/dashboard/discover"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Discover</Button></Link>
+                                        <Button style={{ backgroundColor: '#fff', color: '#000' }} onClick={() => this.props.history.push('/dashboard')}>Profile</Button>
+                                        <Link to={"/dashboard/portfolio"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Portfolio</Button></Link>
+                                        <Link to={"/dashboard/connections"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Connections</Button></Link>
+                                        <Link to={"/dashboard/discover"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Discover</Button></Link>
                                 </div>
                             </GridItem>
                         </GridContainer>
