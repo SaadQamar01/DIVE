@@ -34,7 +34,7 @@ class Portfolio extends React.Component {
             </div>
         <GridContainer > */}
 
-          <GridItem xs={12} sm={12} md={12} >
+          <GridItem xs={12} sm={12} md={12} style={{marginLeft:'59px'}} >
             {/* <Button style={{ backgroundColor: '#fff', color: '#000' }} onClick={() => this.props.history.push('/dashboard/portfolio/Projects')}>Projects</Button> */}
             <Link to={"/dashboard/portfolio/"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Projects</Button></Link>
             <Link to={"/dashboard/portfolio/Courses"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Courses</Button></Link>
