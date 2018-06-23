@@ -1,6 +1,6 @@
 import Components from "views/Components/Components.jsx";
 import LandingPage from "views/LandingPage/LandingPage.jsx";
-import Dashboard from "views/Dashboard/Dashboard.jsx";
+import Dashboard from "../views/Dashboard/Dashboard.jsx";
 import LoginPage from "views/LoginPage/LoginPage.jsx";
 import SignupPage from "../views/SignupPage/SignupPage.jsx";
 
