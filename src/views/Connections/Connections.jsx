@@ -13,6 +13,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Message from '@material-ui/icons/Message';
 
 class Connections extends React.Component {
   render() {
@@ -54,7 +55,7 @@ class Connections extends React.Component {
           <GridItem xs={12} sm={12} md={4} style={{ marginTop: '20px' }}>
           <div style={{ border: '1px solid grey', width: '40%', borderRadius: '15px', position: 'relative', float: 'right', marginRight: '30px' }}>
               <input type="search" name="search Bar" placeholder='Search' id="searchbar" style={{ width: '70%', border: 'none', marginLeft: '10px' }} />
-              <i class="material-icons" style={{ position: 'absolute' }}>search</i>
+              <Message style={{marginTop:'5%',width:'16px',height:'16px'}}/>
             </div>
             <ExpansionPanel className={classes.expansionPanel}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>

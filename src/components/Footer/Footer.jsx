@@ -24,7 +24,8 @@ function Footer({ ...props }) {
   return (
     <footer className={footerClasses}>
       <div className={classes.container}>
-        <div className={classes.left}>
+      2018 DIVE
+        {/* <div className={classes.left}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a
@@ -75,7 +76,7 @@ function Footer({ ...props }) {
             Creative Tim
           </a>{" "}
           for a better web.
-        </div>
+        </div> */}
       </div>
     </footer>
   );

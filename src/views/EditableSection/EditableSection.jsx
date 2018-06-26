@@ -13,11 +13,15 @@ import Typography from '@material-ui/core/Typography';
 // ICON
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Add from '@material-ui/icons/Add';
 // Images
 import profile from "assets/img/faces/christian.png";
 import degree from "assets/img/degree.png";
 import experience from "assets/img/experience.png";
 import Microsoft from "assets/img/Microsoft.png";
+
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 import classNames from "classnames";
 
@@ -50,10 +54,22 @@ class EditableSection extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: '3'
+            count: '3',
+            education: false,
+            experience: false,
+            skills: false,
+            referals: false,
+            jobs: false,
+            startDate: moment()
         }
+        this.handleChange = this.handleChange.bind(this);
     }
 
+    handleChange(date) {
+        this.setState({
+            startDate: date
+        });
+    }
     render() {
         const { classes, ...rest } = this.props;
         const imageClasses = classNames(
@@ -89,13 +105,13 @@ class EditableSection extends React.Component {
                                 </div>
                                 <div>
                                     <Button link style={{ width: 75 }}>
-                                        Projects <span style={{ marginBottom: 7, padding: 5, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >4</span>
+                                        Projects <span style={{ marginBottom: 7, padding: 5, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >0</span>
                                     </Button>
                                     <Button link style={{ width: 90 }}>
-                                        Skills <span style={{ marginBottom: 7, padding: 3, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >4</span>
+                                        Skills <span style={{ marginBottom: 7, padding: 3, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >0</span>
                                     </Button>
                                     <Button link style={{ width: 90 }}>
-                                        Connections <span style={{ marginBottom: 7, padding: 3, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >4</span>
+                                        Connections <span style={{ marginBottom: 7, padding: 3, fontSize: 15, color: 'red', fontWeight: 'bold' }} className="badge badge-default" >0</span>
                                     </Button>
                                 </div>
                             </div>
@@ -107,7 +123,7 @@ class EditableSection extends React.Component {
                                     <ExpansionPanelDetails>
 
                                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                            <div style={{ flex: 1 }}>
+                                            <div style={{ flex: 1, borderBottom: '3px solid #a9abad' }}>
                                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                                     <div style={{ flex: 1 }}>
                                                         <div style={boldHead}>Agenda Name</div>
@@ -131,7 +147,7 @@ class EditableSection extends React.Component {
 
                                             </div>
 
-                                            <div style={{ flex: 1 }}>
+                                            <div style={{ flex: 1, marginTop: '5px' }}>
                                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                                     <div style={{ flex: 1, maxWidth: '50px' }}>
                                                         Month <ExpandMoreIcon />
@@ -153,24 +169,44 @@ class EditableSection extends React.Component {
                                 </ExpansionPanel>
                                 <ExpansionPanel>
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                        <Typography className={classes.heading}>Education</Typography>
+                                        <Typography className={classes.heading}>Education </Typography>
                                     </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
+                                    <ExpansionPanelDetails  >
                                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                                    
+
+
                                             <div style={{ flex: 1 }}>
 
                                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                    <div style={{ flex: 1}}>
+                                                    <div style={{ flex: 1 }}>
+
                                                         <img src={degree} alt="..." className={imageClasses} height={60} width={60} />
                                                     </div>
                                                     <div style={{ flex: 2 }}>
-                                                        <div style={{ fontWeight: 'bold', fontSize: 17 }}> School </div>
-                                                        <div >Degree, Major,Grade/Honors</div>
-                                                        <div> YYYY (Honors options:  </div>
-                                                        <div> Honors, Mangna Cum Laude, </div>
-                                                        <div> Summa Cum Laude) </div>
-                                                        <div style={{ paddingTop: '10px' }}> Additional Description  </div>
+
+
+                                                        {
+                                                            (this.state.education) ? (
+                                                                <div>
+
+                                                                    <input type="text" placeholder='school' />
+                                                                    <input type="text" placeholder='Degree' />
+                                                                    <input type="text" placeholder='Year' />
+                                                                    <input type="text" placeholder='Additional Description' />
+                                                                    <button onClick={() => this.setState({ education: !this.state.education })}>Save</button>
+                                                                    <button onClick={() => this.setState({ education: !this.state.education })}>Cancel</button>
+
+                                                                </div>
+                                                            ) : (
+                                                                    <div>
+                                                                        <Add style={{ float: 'right' }} onClick={() => this.setState({ education: !this.state.education })} />
+                                                                        <div style={{ fontWeight: 'bold', fontSize: 17 }}> School </div>
+                                                                        <div >Degree, Major,Grade/Honors</div>
+                                                                        <div> YYYY (Honors options:  </div>
+                                                                        <div> Honors, Mangna Cum Laude, </div>
+                                                                        <div> Summa Cum Laude) </div>
+                                                                        <div style={{ paddingTop: '10px' }}> Additional Description  </div></div>)
+                                                        }
 
                                                     </div>
                                                 </div>
@@ -205,12 +241,31 @@ class EditableSection extends React.Component {
                                                         <img src={experience} alt="..." className={imageClasses} height={60} width={60} />
                                                     </div>
                                                     <div style={{ flex: 2 }}>
-                                                        <div style={{ fontWeight: 'bold', fontSize: 17 }}> Position </div>
-                                                        <div >Industry Position/Organization</div>
-                                                        <div> YYYY/Mmm YYYY - Present | 0 mo</div>
-                                                        <div>Geolocation (General City/Zone,</div>
-                                                        <div>e.g., Los Angeles, Silicon Valley)</div>
-                                                        <div style={{ paddingTop: '10px' }}> Job Description </div>
+
+
+                                                        {
+                                                            (this.state.experience) ? (
+                                                                <div>
+                                                                    <input type="text" placeholder='Position' />
+                                                                    <input type="text" placeholder='Organization' />
+                                                                    <input type="text" placeholder='City/Zone' />
+                                                                    <input type="text" placeholder='Job Description' />
+                                                                    <button onClick={() => this.setState({ experience: !this.state.experience })}>Save</button>
+                                                                    <button onClick={() => this.setState({ experience: !this.state.experience })}>Cancel</button>
+                                                                </div>
+                                                            ) : (
+                                                                    <div>
+                                                                        <Add style={{ float: 'right' }} onClick={() => this.setState({ experience: !this.state.experience })} />
+                                                                        <div style={{ fontWeight: 'bold', fontSize: 17 }}> Position </div>
+                                                                        <div >Industry Position/Organization</div>
+                                                                        <div> YYYY/Mmm YYYY - Present | 0 mo</div>
+                                                                        <div>Geolocation (General City/Zone,</div>
+                                                                        <div>e.g., Los Angeles, Silicon Valley)</div>
+                                                                        <div style={{ paddingTop: '10px' }}> Job Description </div>
+
+                                                                    </div>
+                                                                )
+                                                        }
 
                                                     </div>
                                                 </div>
@@ -237,16 +292,39 @@ class EditableSection extends React.Component {
                                     <ExpansionPanelDetails>
                                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                                             <div style={{ flex: 1 }}>
+                                                <Add style={{ float: 'right' }} onClick={() => this.setState({ skills: !this.state.skills })} />
+
                                                 <div style={{ borderBottom: '3px solid #a9abad' }}>
-                                                    <span style={{ fontWeight: 'bold', fontSize: 16 }}> Skill </span>
-                                                    | 0 (0 is AVATAR + FULL NAME list industry of endorsers of this skill, if any  endorsers)
-                                            </div>
+                                                    {
+                                                        (this.state.skills) ? (
+                                                            <input type="text" placeholder='Skill' />
+
+                                                        ) : (
+                                                                <div>
+
+                                                                    <span style={{ fontWeight: 'bold', fontSize: 16 }}> Skill </span>
+                                                                    | 0 (0 is AVATAR + FULL NAME list industry of endorsers of this skill, if any endorsers)
+                                                                    </div>)
+                                                    }
+
+                                                </div>
                                             </div>
                                             <div style={{ flex: 1 }}>
                                                 <div style={{ borderBottom: '3px solid #a9abad' }}>
                                                     <div style={{ fontWeight: 'bold', fontSize: 16, }}>Skill</div>
-                                                    <div>Industry/Major</div>
+                                                    {(this.state.skills) ? (<input type="text" placeholder='Industry/Major' />) : (
+
+                                                        <div>Industry/Major</div>
+                                                    )}
                                                 </div>
+                                                {
+                                                    (this.state.skills) ? (<div>
+
+                                                        <button onClick={() => this.setState({ skills: !this.state.skills })}>Save</button>
+                                                        <button onClick={() => this.setState({ skills: !this.state.skills })}>Cancel</button>
+                                                    </div>) : (null)
+                                                }
+
                                             </div>
 
                                             <div style={{ display: 'flex', paddingTop: '15px', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
@@ -275,10 +353,26 @@ class EditableSection extends React.Component {
                                                         <img src={profile} alt="..." className={imageClasses} height={60} width={60} />
                                                     </div>
                                                     <div style={{ flex: 2 }}>
-                                                        <div style={{ fontWeight: 'bold', fontSize: 17 }}> Full Name </div>
-                                                        <div >Position </div>
-                                                        <div> Industry Position/Organization </div>
-                                                        <div> Testimony </div>
+                                                        {(this.state.referals) ? (
+                                                            <div>
+                                                                <input type="text" placeholder='Full name' />
+                                                                <input type="text" placeholder='Position' />
+                                                                <input type="text" placeholder='Organization' />
+                                                                <input type="text" placeholder='Testimony' />
+                                                                <button onClick={() => this.setState({ referals: !this.state.referals })}>Save</button>
+                                                                <button onClick={() => this.setState({ referals: !this.state.referals })}>Cancel</button>
+                                                            </div>
+
+                                                        ) : (
+                                                                <div>
+                                                                    <Add style={{ float: 'right' }} onClick={() => this.setState({ referals: !this.state.referals })} />
+
+                                                                    <div style={{ fontWeight: 'bold', fontSize: 17 }}> Full Name </div>
+                                                                    <div >Position </div>
+                                                                    <div> Industry Position/Organization </div>
+                                                                    <div> Testimony </div>
+                                                                </div>
+                                                            )}
                                                     </div>
                                                 </div>
                                             </div>
@@ -304,76 +398,120 @@ class EditableSection extends React.Component {
                                         <Typography className={classes.heading}>Private: Jobs</Typography>
                                     </ExpansionPanelSummary>
                                     <ExpansionPanelDetails>
-                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                            <div style={{ flex: 1 }}>
-                                                <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                    <div style={{ flex: 0.5 }}>
-                                                        <img src={profile} alt="..." className={imageClasses} height={30} width={30} />
-                                                    </div>
-                                                    <div style={{ flex: 0.3, marginRight: '4px', marginTop: '2px' }}>
-                                                        <ArrowForwardIcon />
-                                                    </div>
-                                                    <div style={{ flex: 0.5 }}>
-                                                        <img src={Microsoft} alt="..." className={imageClasses} height={30} width={30} />
-                                                    </div>
-                                                    <div style={{ flex: 1 }}>
-                                                        <div style={boldHead} >Applied for Position</div>
-                                                        <div style={jobFont}>Organization, Geolocation</div>
-                                                        <div style={jobFont}>Recruiter Name, Position</div>
-                                                    </div>
-                                                    <div style={{ flex: 1 }}>
-                                                        <div style={jobFont}>
-                                                            Mmm DD YYYY
-                                                        </div>
-                                                        <div style={jobFont}>
-                                                            at SOURCE
-                                                        </div>
-                                                        <div style={jobFont}>
-                                                            (User types in SOURCE)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style={{ flex: 1, fontSize: '12px' }}>
-                                                Job Description
-                                            </div>
-                                            <div style={{ flex: 1 }}>
-                                                <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                    <div style={{ flex: 2.5, fontSize: '12px' }}>
-                                                        Interview Conference:
-                                                 </div>
-                                                    <div style={{ flex: 1.3, fontSize: '12px' }}>
-                                                        In Person
-                                                 </div>
-                                                    <div style={{ flex: 0.7, paddingRight: '2px', fontSize: '12px' }}>
-                                                        Phone
-                                                 </div>
-                                                    <div style={{ flex: 0.7, paddingLeft: '2px', fontSize: '12px' }}>
-                                                        Video
-                                                 </div>
-                                                </div>
-                                            </div>
-                                            <div style={{ flex: 1, fontSize: '12px' }}>
-                                                Feedback Recieved
-                                            </div>
-                                            <div style={{ flex: 1, fontSize: '12px' }}>
-                                                What I Learned
-                                            </div>
-                                            <div style={{ flex: 1, fontSize: '12px' }}>
-                                                "Thank You" Letter EMAILED to SOURCE  on Mmm DD YYYY
-                                            </div>
-                                            <div >
-                                                <div style={{ display: 'flex', paddingTop: '15px', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                                        {(this.state.jobs) ? (
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                {/* <div style={{ flex: 1, borderBottom: '3px solid #a9abad' }}>
+                                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                                         */}
+                                                <input type='input' placeholder='Applied for Position' />
+                                                <input type='input' placeholder='Organization, Geolocation' />
+                                                <input type='input' placeholder='Recruiter Name, Position' />
 
-                                                    <div style={{ flex: 2, marginLeft: '80px' }}>
-                                                        Show More
-                                                    </div>
-                                                    <div style={{ flex: 1, marginRight: '80px', marginTop: '7px' }}>
-                                                        <ExpandMoreIcon />
+                                                <DatePicker
+                                                    selected={this.state.startDate}
+                                                    onChange={this.handleChange}
+                                                />
+                                                <input type='input' placeholder='User types in SOURCE' />
+
+
+                                                {/* </div>
+                                                </div> */}
+                                                {/* <div style={{ flex: 1, fontSize: '12px' }}> */}
+                                                {/* </div> */}
+                                                <input type='input' placeholder='Job Description' />
+
+                                                <input type='input' placeholder='FeedBack Recieved' />
+                                                <input type='input' placeholder='What I Learned' />
+                                                <button onClick={() => this.setState({ jobs: !this.state.jobs })}>Save</button>
+                                                <button onClick={() => this.setState({ jobs: !this.state.jobs })}>Cancel</button>
+
+                                                <div >
+                                                    <div style={{ display: 'flex', paddingTop: '15px', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+
+                                                        <div style={{ flex: 3, marginLeft: '80px' }}>
+                                                            Show More
+                                                        </div>
+                                                        <div style={{ flex: 1, marginRight: '80px', marginTop: '7px' }}>
+                                                            <ExpandMoreIcon />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        ) : (
+                                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                    <div style={{ flex: 1, borderBottom: '3px solid #a9abad' }}>
+                                                        <Add style={{ float: 'right' }} onClick={() => this.setState({ jobs: !this.state.jobs })} />
+
+                                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                                            <div style={{ flex: 0.5 }}>
+                                                                <img src={profile} alt="..." className={imageClasses} height={30} width={30} />
+                                                            </div>
+                                                            <div style={{ flex: 0.3, marginRight: '4px', marginTop: '2px' }}>
+                                                                <ArrowForwardIcon />
+                                                            </div>
+                                                            <div style={{ flex: 0.5 }}>
+                                                                <img src={Microsoft} alt="..." className={imageClasses} height={30} width={30} />
+                                                            </div>
+                                                            <div style={{ flex: 1 }}>
+                                                                <div style={boldHead} >Applied for Position</div>
+                                                                <div style={jobFont}>Organization, Geolocation</div>
+                                                                <div style={jobFont}>Recruiter Name, Position</div>
+                                                            </div>
+                                                            <div style={{ flex: 1 }}>
+                                                                <div style={jobFont}>
+                                                                    Mmm DD YYYY
+                                                        </div>
+                                                                <div style={jobFont}>
+                                                                    at SOURCE
+                                                        </div>
+                                                                <div style={jobFont}>
+                                                                    (User types in SOURCE)
+                                                        </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style={{ flex: 1, fontSize: '12px' }}>
+                                                        Job Description
+                                            </div>
+                                                    <div style={{ flex: 1 }}>
+                                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                                            <div style={{ flex: 2.5, fontSize: '12px' }}>
+                                                                Interview Conference:
+                                                 </div>
+                                                            <div style={{ flex: 1.3, fontSize: '12px' }}>
+                                                                In Person
+                                                 </div>
+                                                            <div style={{ flex: 0.7, paddingRight: '2px', fontSize: '12px' }}>
+                                                                Phone
+                                                 </div>
+                                                            <div style={{ flex: 0.7, paddingLeft: '2px', fontSize: '12px' }}>
+                                                                Video
+                                                 </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style={{ flex: 1, fontSize: '12px' }}>
+                                                        Feedback Recieved
+                                            </div>
+                                                    <div style={{ flex: 1, fontSize: '12px' }}>
+                                                        What I Learned
+                                            </div>
+                                                    <div style={{ flex: 1, fontSize: '12px' }}>
+                                                        "Thank You" Letter EMAILED to SOURCE  on Mmm DD YYYY
+                                            </div>
+                                                    <div >
+                                                        <div style={{ display: 'flex', paddingTop: '15px', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+
+                                                            <div style={{ flex: 2, marginLeft: '80px' }}>
+                                                                Show More
+                                                    </div>
+                                                            <div style={{ flex: 1, marginRight: '80px', marginTop: '7px' }}>
+                                                                <ExpandMoreIcon />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+
                                     </ExpansionPanelDetails>
                                 </ExpansionPanel>
                             </div>

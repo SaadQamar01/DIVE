@@ -14,6 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import discover from "../../assets/img/searchBarIcon/discover.png";
 
 class Discover extends React.Component {
   render() {
@@ -128,7 +129,7 @@ class Discover extends React.Component {
           <GridItem xs={12} sm={12} md={4} style={{ marginTop: '20px' }}>
             <div style={{border:'1px solid grey',width:'40%',borderRadius:'15px',position:'relative',float:'right',marginRight:'30px'}}>
               <input type="search" name="search Bar" placeholder='Search' id="searchbar" style={{width:'70%',border:'none',marginLeft:'10px'}}/>
-              <i class="material-icons" style={{position:'absolute'}}>search</i>
+              <img src={discover} alt="..." className={imageClasses} height={15} width={15} />
             </div>
           </GridItem>
         </GridContainer>

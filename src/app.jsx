@@ -1,4 +1,6 @@
 import React from "react";
+import logo from "./assets/img/logo.png";
+// import classNames from "classnames";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -24,6 +26,7 @@ var hist = createBrowserHistory();
 // import image from "assets/img/bg7.jpg";
 // import { Link } from "react-router-dom";
 
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -38,12 +41,17 @@ class App extends React.Component {
     render() {
         console.log(hist)
         const { classes, ...rest } = this.props;
+        // const imageClasses = classNames(
+        //     classes.imgRaised,
+        //     classes.imgRoundedCircle,
+        //     classes.imgFluid
+        // );
         return (
             <Router history={hist}>
                 <div>
                     <Header
                         color="transparent"
-                        brand="DIVE"
+                        leftLinks={<img src={logo} alt="..."  height={25} width={80} />}
                         rightLinks={<HeaderLinks />}
                         fixed
                         changeColorOnScroll={{
