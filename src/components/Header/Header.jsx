@@ -84,7 +84,7 @@ class Header extends React.Component {
           {leftLinks !== undefined ? brandComponent : null}
           <div className={classes.flex}>
             {leftLinks !== undefined ? (
-              <Hidden smDown implementation="css">
+              <Hidden  implementation="css">
                 {leftLinks}
               </Hidden>
             ) : (

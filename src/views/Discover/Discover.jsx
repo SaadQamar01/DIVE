@@ -16,6 +16,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import discover from "../../assets/img/searchBarIcon/discover.png";
 
+import Avatar from 'react-avatar';
+
 class Discover extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
@@ -33,15 +35,7 @@ class Discover extends React.Component {
             <GridContainer style={{ marginTop: '60px' }} justify="center">
               <GridItem xs={12} sm={12} md={12}>
                 <Card style={{ height: '90px', borderRadius: '10px', padding: '20px 40px' }}>
-                  <span style={{
-                    display: 'inline-block',
-                    width: '50px',
-                    height: '50px',
-                    border: ' 2px solid',
-                    borderRadius: '25px',
-                    textAlign: 'center',
-                    paddingTop: '10px',
-                  }}>JJ</span>
+                <Avatar name="Name" size="45" round={true} />
                   <span style={{
                     display: 'inline-block',
                     marginLeft: '20px'

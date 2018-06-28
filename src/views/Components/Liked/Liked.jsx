@@ -9,6 +9,8 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Card from '@material-ui/core/Card';
 
+import liked from "../../assets/img/icons/liked.png";
+
 class Liked extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
@@ -126,7 +128,7 @@ class Liked extends React.Component {
             <div>
               <div style={{ border: '1px solid grey', width: '40%', borderRadius: '15px', position: 'relative', float: 'right', marginRight: '30px' }}>
                 <input type="search" name="search Bar" placeholder='Search' id="searchbar" style={{ width: '70%', border: 'none', marginLeft: '10px' }} />
-                <i class="material-icons" style={{ position: 'absolute' }}>search</i>
+                <img src={liked} alt="..." className={imageClasses} height={15} width={15} />
               </div>
             </div>
             <div>

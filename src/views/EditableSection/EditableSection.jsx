@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import Button from "components/CustomButtons/Button.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -20,10 +21,13 @@ import degree from "assets/img/degree.png";
 import experience from "assets/img/experience.png";
 import Microsoft from "assets/img/Microsoft.png";
 
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
 
-import classNames from "classnames";
+// import BigCalendar from 'react-big-calendar'
+// import moment from 'moment'
+
+
+
+
 
 const styles = theme => ({
     root: {
@@ -49,6 +53,8 @@ const jobFont = {
 }
 
 
+// BigCalendar.momentLocalizer(moment)
+
 class EditableSection extends React.Component {
 
     constructor(props) {
@@ -60,7 +66,7 @@ class EditableSection extends React.Component {
             skills: false,
             referals: false,
             jobs: false,
-            startDate: moment()
+            
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -161,6 +167,12 @@ class EditableSection extends React.Component {
                                                     <div style={{ flex: 1, maxWidth: '50px' }}>
                                                         Agenda <ExpandMoreIcon />
                                                     </div>
+ {/* <BigCalendar
+    
+    step={60}
+    showMultiDayTimes
+    defaultDate={new Date(2015, 3, 1)}
+  /> */}
                                                 </div>
                                             </div>
 
@@ -407,10 +419,10 @@ class EditableSection extends React.Component {
                                                 <input type='input' placeholder='Organization, Geolocation' />
                                                 <input type='input' placeholder='Recruiter Name, Position' />
 
-                                                <DatePicker
+                                                {/* <DatePicker
                                                     selected={this.state.startDate}
                                                     onChange={this.handleChange}
-                                                />
+                                                /> */}
                                                 <input type='input' placeholder='User types in SOURCE' />
 
 

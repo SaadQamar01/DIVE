@@ -9,6 +9,8 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Card from '@material-ui/core/Card';
 
+import project from "../../../assets/img/icons/project.png";
+
 class Projects extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
@@ -125,7 +127,7 @@ class Projects extends React.Component {
           <GridItem xs={12} sm={12} md={4} style={{ marginTop: '20px' }}>
             <div style={{ border: '1px solid grey', width: '40%', borderRadius: '15px', position: 'relative', float: 'right', marginRight: '30px' }}>
               <input type="search" name="search Bar" placeholder='Search' id="searchbar" style={{ width: '70%', border: 'none', marginLeft: '10px' }} />
-              <i class="material-icons" style={{ position: 'absolute' }}>search</i>
+              <img src={project} alt="..." className={imageClasses} height={15} width={15} />
             </div>
           </GridItem>
         </GridContainer>

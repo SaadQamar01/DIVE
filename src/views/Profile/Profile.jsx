@@ -18,14 +18,17 @@ class Profile extends React.Component {
     //   classes.imgRoundedCircle,
     //   classes.imgFluid
     // );
-    const image = require('../../assets/img/faces/christian.jpg')
+    const resume = require('../../assets/img/icons/resume.png')
+    const project = require('../../assets/img/icons/project.png')
+    const course = require('../../assets/img/icons/course.png')
+    const accomplishment = require('../../assets/img/icons/accomplishment.png')
     return (
       <div>
         <GridContainer style={{ marginTop: '40px' }}>
           <GridItem md={4}>
             <div className={classes.card_div}>
-              <div className={classes.roundPicDiv}>
-                <img className={classes.img} src={image} />
+              <div className={classes.roundPicDiv} style={{backgroundColor:'#fff'}}>
+                <img className={classes.img} src={project} />
               </div>
               <Card className={classes.cardStyle}>
                 <div className={classes.cardText}>
@@ -36,8 +39,8 @@ class Profile extends React.Component {
               </Card>
             </div>
             <div className={classes.card_div}>
-              <div className={classes.roundPicDiv}>
-                <img className={classes.img} src={image} />
+              <div className={classes.roundPicDiv} style={{backgroundColor:'#fff'}}>
+                <img className={classes.img} src={course} />
               </div>
               <Card className={classes.cardStyle}>
                 <div className={classes.cardText}>
@@ -48,8 +51,8 @@ class Profile extends React.Component {
           </GridItem>
           <GridItem md={4}>
             <div className={classes.card_div}>
-              <div className={classes.roundPicDiv}>
-                <img className={classes.img} src={image} />
+              <div className={classes.roundPicDiv} style={{backgroundColor:'#fff'}}>
+                <img className={classes.img} src={resume} />
               </div>
               <Card className={classes.cardStyle}>
                 <div className={classes.cardText}>
@@ -58,8 +61,8 @@ class Profile extends React.Component {
               </Card>
             </div>
             <div className={classes.card_div}>
-              <div className={classes.roundPicDiv}>
-                <img className={classes.img} src={image} />
+              <div className={classes.roundPicDiv} style={{backgroundColor:'#fff'}}>
+                <img className={classes.img} src={accomplishment} />
               </div>
               <Card className={classes.cardStyle}>
                 <div className={classes.cardText}>
