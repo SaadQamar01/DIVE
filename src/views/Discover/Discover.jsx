@@ -25,6 +25,8 @@ class Discover extends React.Component {
     );
     const image = require('../../assets/img/apple-icon.png')
     const media_image = require('../../assets/img/bg3.jpg')
+        // const responseStyle = Platform.DeviceType === 'mobile' ? 'mRoot' : 'root';
+    
     return (
       <div >
         <GridContainer>
@@ -81,7 +83,7 @@ class Discover extends React.Component {
                   <div>
                     {/* <Card> */}
                     <GridContainer>
-                      <GridItem md={10}>
+                      <GridItem md={10} xs={12} sm={8}>
                         <Card style={{ borderRadius: '10px', margin: 'auto', width: '75%', marginTop: '30px' }}>
                           <img src={media_image} width='100%' height="180px" />
                           <div style={{ padding: '20px' }}>
@@ -94,7 +96,7 @@ class Discover extends React.Component {
                           </div>
                         </Card>
                       </GridItem>
-                      <GridItem md={2}>
+                      <GridItem md={2}  xs={12} sm={4}>
                         <div style={{ marginTop: '30px', width: '100%', textAlign: 'center', paddingTop: '20px' }}>
                           <div style={{ marginBottom: '20px', position: 'relative' }}>
                             <i class="material-icons">thumb_up</i>

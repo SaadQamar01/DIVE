@@ -2,6 +2,8 @@ import React from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import { connect } from 'react-redux'; //to pass functions
+import { bindActionCreators } from 'redux';
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
 import LockOutline from "@material-ui/icons/LockOutline";
@@ -19,10 +21,14 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
-
+import axios from 'axios'
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
-
+import { loginRequest, signupRequest, facebookLogin, twitterLogin, gmailLogin } from '../../actions'
 import image from "assets/img/bg7.jpg";
+import ReactDOM from 'react-dom';
+import FacebookLogin from 'react-facebook-login'
+import GoogleLogin from 'react-google-login';
+import TwitterLogin from 'react-twitter-auth/lib/react-twitter-auth-component.js';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -34,6 +40,9 @@ class LoginPage extends React.Component {
       isEmailSuccess: false,
       isPasswordError: false,
       isPasswordSuccess: false,
+      password: '',
+      email: '',
+      fbUser: {}
     };
   }
   componentDidMount() {
@@ -46,22 +55,69 @@ class LoginPage extends React.Component {
     );
   }
 
-  getEmail(email) {
-    console.log(email);
+  responseFacebook = (response) => {
+    console.log(response);
+  }
+  // fLogin = () => {
+  //   appId = "1825203637776513"
+  //   autoLoad = { true}
+  //   fields = "name,email,public_profile"
+  //   onClick = { componentClicked }
+  //   callback = { this.responseFacebook() }
+  // }
+
+
+
+
+  getEmail = (_email) => {
+    console.log(_email);
+    this.setState({
+      email: _email
+    })
   }
 
-  getPassword(password) {
-    if (password > 6) {
-      // this.setState({ isPasswordSuccess: true})
-    }
-    else {
-      this.setState({ isPasswordError: true });
-    }
+  getPassword = (password) => {
+    this.setState({
+      password: password
+    })
     console.log(password);
   }
+
+  login = () => {
+    console.log("LOGIN FUNCTION")
+    let data = {
+      email: this.state.email,
+      password: this.state.password,
+    }
+    this.props.actions.loginRequest(data).then((response) => {
+      console.log("RESPONSE DATA ", response)
+    }, (error) => {
+      console.log(error)
+    });
+  }
+  responseFacebook = (response) => {
+    console.log("FB RESPONSE FUVN")
+    console.log(response);
+  }
+  onSuccess =(response)=> {
+    response.json().then(body => {
+      alert(JSON.stringify(body));
+    });
+  }
+
+  onFailed=(error)=> {
+    alert(error);
+  }
+
   render() {
     console.log(this.props);
     const { classes, ...rest } = this.props;
+    const responseGoogle = (response) => {
+      console.log("GOOGLE RESPONSE FUNC")
+      console.log(response);
+      const customHeader = {};
+      customHeader['Test'] = 'test-header';
+    }
     return (
       <div>
         <Header
@@ -71,6 +127,28 @@ class LoginPage extends React.Component {
           rightLinks={<HeaderLinks />}
           {...rest}
         />
+        {/* <GoogleLogin
+          clientId="724803736117-uaegelah9fhd0nkcs3jvjcvpjqjm019t.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+        />
+        <FacebookLogin
+          appId="1825203637776513"
+          autoLoad={true}
+          fields="name,email"
+          // onClick={componentClicked}
+          callback={this.responseFacebook} />
+           <TwitterLogin 
+           loginUrl="http://localhost:4000/api/v1/auth/twitter"
+              onFailure={this.onFailed}
+              onSuccess={this.onSuccess}
+              requestTokenUrl="	https://api.twitter.com/oauth/request_token"
+              showIcon={true}
+              // customHeaders={customHeader}
+              >
+    <b>Custom</b> Twitter <i>Login</i> content
+</TwitterLogin> */}
         <div
           className={classes.pageHeader}
           style={{
@@ -102,7 +180,7 @@ class LoginPage extends React.Component {
                           href="#pablo"
                           target="_blank"
                           color="transparent"
-                          onClick={e => e.preventDefault()}
+                          onClick={e => this.facebookLogin(e)}
                         >
                           <i className={"fab fa-facebook"} />
                         </Button>
@@ -179,11 +257,11 @@ class LoginPage extends React.Component {
                       </Button>
                     </Link> */}
                     <CardFooter className={classes.cardFooter}>
-                      <Link to={"/dashboard"} className={{}}>
-                        <Button simple color="warning" size="lg">
-                          DIVE IN
+                      {/* <Link to={"/dashboard"} className={{}}> */}
+                      <Button simple color="warning" size="lg" onClick={() => this.login()}>
+                        DIVE IN
                       </Button>
-                      </Link>
+                      {/* </Link> */}
                     </CardFooter>
                   </form>
                 </Card>
@@ -196,4 +274,21 @@ class LoginPage extends React.Component {
   }
 }
 
-export default withStyles(loginPageStyle)(LoginPage);
+
+function mapStateToProps(state) {
+  //pass the providers
+  return {
+    // auth: state.auth
+  }
+}
+
+/* Map Actions to Props */
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({
+      loginRequest, signupRequest, facebookLogin, twitterLogin, gmailLogin
+    }, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(loginPageStyle)(LoginPage));

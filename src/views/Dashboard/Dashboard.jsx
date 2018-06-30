@@ -15,6 +15,7 @@ import { Route } from "react-router";
 import mainRoutes from "../../routes/mainRoutes.jsx";
 import profilePageStyle from "../../assets/jss/material-kit-react/views/profilePage.jsx";
 import EditableSection from '../EditableSection/EditableSection';
+import Platform from 'react-platform-js'
 
 class Dashboard extends React.Component {
     render() {
@@ -24,6 +25,8 @@ class Dashboard extends React.Component {
             classes.imgRoundedCircle,
             classes.imgFluid
         );
+
+        const responseStyle = Platform.DeviceType === 'mobile' ? 'mRoot' : 'root';
         return (
             <div>
                 <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
@@ -48,9 +51,6 @@ class Dashboard extends React.Component {
                                             <i className={"fab fa-facebook"} />
                                         </Button>
                                         <Button justIcon link className={classes.margin5}>
-                                            <i className={"fab fa-pinterest"} />
-                                        </Button>
-                                        <Button justIcon link className={classes.margin5}>
                                             <i className={"fab fa-youtube"} />
                                         </Button>
                                         <Button justIcon link className={classes.margin5}>
@@ -68,10 +68,10 @@ class Dashboard extends React.Component {
                             </GridItem>
                         </GridContainer>
                         <GridContainer>
-                            <GridItem style={{ width: '33%' }}>
+                            <GridItem sm={12} xs={12} md={4}>
                                 <EditableSection />
                             </GridItem>
-                            <GridItem style={{ width: '67%' }}>
+                            <GridItem sm={12} xs={12} md={8} >
                                 {mainRoutes.map((prop, key) => {
                                     if (prop.path == '/dashboard') {
                                         return <Route exact path={prop.path} key={key} component={prop.component} />;

@@ -2,6 +2,8 @@ import React from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import { connect } from 'react-redux'; //to pass functions
+import { bindActionCreators } from 'redux';
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
 import LockOutline from "@material-ui/icons/LockOutline";
@@ -18,6 +20,8 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+import { loginRequest, signupRequest, facebookLogin, twitterLogin, gmailLogin } from '../../actions'
+
 
 import signupPageStyle from "assets/jss/material-kit-react/views/signupPage.jsx";
 
@@ -29,7 +33,12 @@ class SignupPage extends React.Component {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-      cardAnimaton: "cardHidden"
+      cardAnimaton: "cardHidden",
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: ''
+
     };
   }
   componentDidMount() {
@@ -41,6 +50,51 @@ class SignupPage extends React.Component {
       700
     );
   }
+  signup = () => {
+    let data = {
+      email: this.state.email,
+      password: this.state.password,
+      profile: {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName
+      }
+    }
+    this.props.actions.signupRequest(data).then((response) => {
+      console.log("RESPONSE DATA ", response)
+      this.props.history.push('/')
+    }, (error) => {
+      console.log(error)
+    });
+  }
+
+
+  getEmail = (_email) => {
+    console.log(_email);
+    this.setState({
+      email: _email
+    })
+  }
+
+  getPassword = (_password) => {
+    this.setState({
+      password: _password
+    })
+    console.log(_password);
+  }
+  getFirstName = (fName) => {
+    this.setState({
+      firstName: fName
+    })
+    console.log(fName);
+  }
+  getLastName = (lName) => {
+    this.setState({
+      lastName: lName
+    })
+    console.log(lName);
+  }
+
+
   render() {
     const { classes, ...rest } = this.props;
     return (
@@ -100,11 +154,14 @@ class SignupPage extends React.Component {
                     <p className={classes.divider}></p>
                     <CardBody>
                       <CustomInput
-                        labelText="Name..."
-                        id="Name"
+                        labelText="First Name"
+                        id="fistName"
                         formControlProps={{
                           fullWidth: true
                         }}
+                        getValue={this.getFirstName}
+                        success={this.state.isPasswordSuccess}
+                        error={this.state.isPasswordError}
                         inputProps={{
                           type: "text",
                           endAdornment: (
@@ -114,12 +171,16 @@ class SignupPage extends React.Component {
                           )
                         }}
                       />
-                      {/* <CustomInput
+
+                      <CustomInput
                         labelText="Last Name..."
                         id="last"
                         formControlProps={{
                           fullWidth: true
                         }}
+                        getValue={this.getLastName}
+                        success={this.state.isPasswordSuccess}
+                        error={this.state.isPasswordError}
                         inputProps={{
                           type: "text",
                           endAdornment: (
@@ -128,28 +189,34 @@ class SignupPage extends React.Component {
                             </InputAdornment>
                           )
                         }}
-                      /> */}
+                      />
                       <CustomInput
                         labelText="Email..."
-                        id="email"
+                        id="Email"
                         formControlProps={{
                           fullWidth: true
                         }}
+                        getValue={this.getEmail}
+                        success={this.state.isPasswordSuccess}
+                        error={this.state.isPasswordError}
                         inputProps={{
-                          type: "email",
+                          type: "text",
                           endAdornment: (
                             <InputAdornment position="end">
-                              <Email className={classes.inputIconsColor} />
+                              <People className={classes.inputIconsColor} />
                             </InputAdornment>
                           )
                         }}
                       />
                       <CustomInput
                         labelText="Password"
-                        id="pass"
+                        id="password"
                         formControlProps={{
                           fullWidth: true
                         }}
+                        getValue={this.getPassword}
+                        success={this.state.isPasswordSuccess}
+                        error={this.state.isPasswordError}
                         inputProps={{
                           type: "password",
                           endAdornment: (
@@ -168,11 +235,12 @@ class SignupPage extends React.Component {
                       </Button>
                     </Link> */}
                     <CardFooter className={classes.cardFooter}>
-                      <Link to={"/dashboard"} className={{}}>
-                        <Button simple color="warning" size="lg">
-                          GET STARTED
+                      {/* <Link to={"/dashboard"} className={{}}> */}
+
+                      <Button simple color="warning" size="lg" onClick={() => this.signup()}>
+                        Sign Up
                       </Button>
-                      </Link>
+                      {/* </Link> */}
                     </CardFooter>
                   </form>
                 </Card>
@@ -180,9 +248,26 @@ class SignupPage extends React.Component {
             </GridContainer>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }
 
-export default withStyles(signupPageStyle)(SignupPage);
+function mapStateToProps(state) {
+  //pass the providers
+  return {
+    // auth: state.auth
+  }
+}
+
+/* Map Actions to Props */
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({
+      loginRequest, signupRequest, facebookLogin, twitterLogin, gmailLogin
+    }, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(signupPageStyle)(SignupPage));
+
