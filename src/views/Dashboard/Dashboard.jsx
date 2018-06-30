@@ -30,16 +30,18 @@ class Dashboard extends React.Component {
     }
 
     componentWillMount() {
-        this.props.actions.getUser({ 'x-access-token': this.props.token }, this.props.user._id).then((response) => {
-            console.log(response, "DATA FOR SPECDIFIC USER")
-            this.setState =( {
-                userData : response.data
-                        },()=>{
-                            console.log(this.state.userData,"USER DATA IN STATE")
-                        })
-        }, (error) => {
-            console.log(error, "ERROR TO GET USER DATA")
-        })
+        // let token = localStorage.getItem("access_token");
+        // let id = localStorage.getItem("id");
+        // this.props.actions.getUser({ 'x-access-token': token },id).then(  (response) => {
+        //     console.log(response, "DATA FOR SPECDIFIC USER")
+        //     this.setState = ( {
+        //         userData : response.data
+        //                 },()=>{
+        //                     console.log(this.state.userData,"USER DATA IN STATE")
+        //                 })
+        // }, (error) => {
+        //     console.log(error, "ERROR TO GET USER DATA")
+        // })
     }
 
     render() {
@@ -93,7 +95,7 @@ class Dashboard extends React.Component {
                         </GridContainer>
                         <GridContainer>
                             <GridItem sm={12} xs={12} md={4}>
-                                <EditableSection allUserData ={this.state.userData} />
+                                <EditableSection/>
                             </GridItem>
                             <GridItem sm={12} xs={12} md={8} >
                                 {mainRoutes.map((prop, key) => {

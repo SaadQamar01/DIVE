@@ -24,7 +24,6 @@ import { connect } from 'react-redux'; //to pass functions
 import { bindActionCreators } from 'redux';
 import { getUser } from '../../actions'
 
-
 // import BigCalendar from 'react-big-calendar'
 // import moment from 'moment'
 
@@ -69,19 +68,36 @@ class EditableSection extends React.Component {
             skills: false,
             referals: false,
             jobs: false,
-
+            
         }
         this.handleChange = this.handleChange.bind(this);
     }
 
-    componentWillMount() {
-        console.log(this.props.allUserData,"DATA from props")
+    
+    componentDidMount() {
+        let token = localStorage.getItem("access_token");
+        let id = localStorage.getItem("id");
+        this.props.actions.getUser({ 'x-access-token': token },id).then(  (response) => {
+            console.log(response, "DATA FOR SPECDIFIC USER")
+            this.setState = ( {
+                userData : response.data
+                        },()=>{
+                            console.log(this.state.userData,"USER DATA IN STATE")
+                        })
+        }, (error) => {
+            console.log(error, "ERROR TO GET USER DATA")
+        })
     }
 
     handleChange(date) {
         this.setState({
             startDate: date
         });
+    }
+
+    toggleEvent = (e)=>{
+        e.preventDefault();
+        this.setState({ education: !this.state.education })
     }
     render() {
         const { classes, ...rest } = this.props;
@@ -174,7 +190,7 @@ class EditableSection extends React.Component {
                                                     <div style={{ flex: 1, maxWidth: '50px' }}>
                                                         Agenda <ExpandMoreIcon />
                                                     </div>
-                                                    {/* <BigCalendar
+ {/* <BigCalendar
     
     step={60}
     showMultiDayTimes
@@ -193,7 +209,6 @@ class EditableSection extends React.Component {
                                     <ExpansionPanelDetails  >
                                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
-
                                             <div style={{ flex: 1 }}>
 
                                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -207,7 +222,6 @@ class EditableSection extends React.Component {
                                                         {
                                                             (this.state.education) ? (
                                                                 <div>
-
                                                                     <input type="text" placeholder='school' />
                                                                     <input type="text" placeholder='Degree' />
                                                                     <input type="text" placeholder='Year' />
@@ -218,7 +232,7 @@ class EditableSection extends React.Component {
                                                                 </div>
                                                             ) : (
                                                                     <div>
-                                                                        <Add style={{ float: 'right' }} onClick={() => this.setState({ education: !this.state.education })} />
+                                                                        <Add style={{ float: 'right' }} onClick={(e) =>this.toggleEvent(e) } />
                                                                         <div style={{ fontWeight: 'bold', fontSize: 17 }}> School </div>
                                                                         <div >Degree, Major,Grade/Honors</div>
                                                                         <div> YYYY (Honors options:  </div>
@@ -564,6 +578,5 @@ function mapDispatchToProps(dispatch) {
         }, dispatch)
     };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EditableSection));

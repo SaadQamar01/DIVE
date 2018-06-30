@@ -48,6 +48,8 @@ const auth_reducer = (state = initialState.auth, action) => {
       console.log(LOGIN_SUCCESS);
       console.log(action.data, "============Action data===========")
       localStorage.setItem('access_token', action.data.data.token);
+      localStorage.setItem('id', action.data.data._id);
+      localStorage.setItem('login_user', action.data.data);
       return Object.assign(
         {},
         state,

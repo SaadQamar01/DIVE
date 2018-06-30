@@ -7,18 +7,18 @@ import {
   LOGIN_SUCCESS,
 } from '../constants/ActionTypes';
 
-export function createEducation(token,data) {
+export function createExperience(token,data) {
     return function (dispatch) {
       return new Promise(function (resolve, reject) {
         {
           // API
-          HTTP('post', 'education/', data, {'x-access-token' :token})
+          HTTP('post', 'experience/', data, {'x-access-token' :token})
             .then(function (response) {
-              console.log("Data of education response", response.data);
+              console.log("Data of Experience response", response.data);
               resolve(response.data);
             })
             .catch(error => {
-              console.log("Data of education response: ", error);
+              console.log("Data of Experience response: ", error);
               reject(error.response);
   
             })
@@ -26,38 +26,18 @@ export function createEducation(token,data) {
       })
     }
   }
-export function getEducationById({'x-access-token' :token}, id) {
+export function getExperienceById({'x-access-token' :token}, id) {
     return function (dispatch) {
       return new Promise(function (resolve, reject) {
         {
           // API
-          HTTP('get', 'education/' + id, null, token)
+          HTTP('get', 'experience/' + id, null, token)
             .then(function (response) {
-              console.log("Data of specific education response", response.data);
+              console.log("Data of specific Experience response", response.data);
               resolve(response.data);
             })
             .catch(error => {
-              console.log("Data of specific education response: ", error);
-              reject(error.response);
-  
-            })
-        }
-      })
-    }
-  }
-
-  export function getAllEducation(token) {
-    return function (dispatch) {
-      return new Promise(function (resolve, reject) {
-        {
-          // API
-          HTTP('get', 'education/', null, {'x-access-token' :token})
-            .then(function (response) {
-              console.log("Data of all education response", response.data);
-              resolve(response.data);
-            })
-            .catch(error => {
-              console.log("Data of all education response: ", error);
+              console.log("Data of specific Experience response: ", error);
               reject(error.response);
   
             })
@@ -66,18 +46,38 @@ export function getEducationById({'x-access-token' :token}, id) {
     }
   }
 
-  export function updateEducationById(token, id ,data) {
+  export function getAllExperience(token) {
     return function (dispatch) {
       return new Promise(function (resolve, reject) {
         {
           // API
-          HTTP('put', 'education/' + id, data, {'x-access-token' :token})
+          HTTP('get', 'experience/', null, {'x-access-token' :token})
             .then(function (response) {
-              console.log("Data of specific education response", response.data);
+              console.log("Data of all Experience response", response.data);
               resolve(response.data);
             })
             .catch(error => {
-              console.log("Data of specific education response: ", error);
+              console.log("Data of all Experience response: ", error);
+              reject(error.response);
+  
+            })
+        }
+      })
+    }
+  }
+
+  export function updateExperienceById(token, id ,data) {
+    return function (dispatch) {
+      return new Promise(function (resolve, reject) {
+        {
+          // API
+          HTTP('put', 'experience/' + id, data, {'x-access-token' :token})
+            .then(function (response) {
+              console.log("Data of specific Experience response", response.data);
+              resolve(response.data);
+            })
+            .catch(error => {
+              console.log("Data of specific Experience response: ", error);
               reject(error.response);
   
             })

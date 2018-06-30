@@ -152,3 +152,24 @@ export function getUser(token, id) {
     })
   }
 }
+
+
+export function updateUser(token, id) {
+  return function (dispatch) {
+    return new Promise(function (resolve, reject) {
+      {
+        // API
+        HTTP('put', 'user/' + id, null, token)
+          .then(function (response) {
+            console.log("update Data of specific user", response.data);
+            resolve(response.data);
+          })
+          .catch(error => {
+            console.log("error of update data of specific user: ", error);
+            reject(error.response);
+
+          })
+      }
+    })
+  }
+}
