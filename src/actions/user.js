@@ -1,11 +1,11 @@
-// import { HTTP } from './../utils/HTTP';
+import { HTTP } from './../utils/HTTP';
 
-// import {
-//   SESSION_REQUEST,
-//   SESSION_SUCCESS,
-//   UNAUTHORIZED,
-//   LOGIN_SUCCESS
-// } from '../constants/ActionTypes';
+import {
+  SESSION_REQUEST,
+  SESSION_SUCCESS,
+  UNAUTHORIZED,
+  LOGIN_SUCCESS,
+} from '../constants/ActionTypes';
 
 // import { AsyncStorage } from 'react-native';
 // import { checkInternetConnection } from './auth'
@@ -133,23 +133,22 @@
 // }
 
 // Get specific User
-// export function getUser(token, id) {
-//   return function (dispatch) {
-//     return new Promise(function (resolve, reject) {
-//       {
-//         // API
-//         HTTP('get', 'user/' + id, null, token)
-//           .then(function (response) {
-//             console.log("Data of specific user", response.data);
-//             resolve(response.data);
-//           })
-//           .catch(error => {
-//             console.log("error of specific user: ", error);
-//             reject(error.response);
-//             checkInternetConnection(error);
+export function getUser(token, id) {
+  return function (dispatch) {
+    return new Promise(function (resolve, reject) {
+      {
+        // API
+        HTTP('get', 'user/' + id, null, token)
+          .then(function (response) {
+            console.log("Data of specific user", response.data);
+            resolve(response.data);
+          })
+          .catch(error => {
+            console.log("error of specific user: ", error);
+            reject(error.response);
 
-//           })
-//       }
-//     })
-//   }
-// }
+          })
+      }
+    })
+  }
+}

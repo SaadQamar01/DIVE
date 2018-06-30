@@ -54,11 +54,11 @@ export function loginRequest(data) {
       console.log("login action++++++++++++")
       {
         dispatch({
-          type: LOGIN_SUCCESS
+          type: LOGIN_REQUEST
         })
 
         // API
-        HTTP('post', 'v1/api/user/login', data)
+        HTTP('post', 'user/login', data)
           .then(function (response) {
             console.log("login user response: ", response.data);
             dispatch({
@@ -89,20 +89,20 @@ export function signupRequest(data) {
         })
 
         // API
-        HTTP('post', 'v1/api/user/signup', data)
+        HTTP('post', 'user/signup', data)
           .then(function (response) {
             console.log("signup user response: ", response.data);
-            dispatch({
-              type: SIGNUP_SUCCESS,
-              data: response.data
-            })
+            // dispatch({
+            //   type: SIGNUP_SUCCESS,
+            //   data: response.data
+            // })
             resolve(response.data);
           })
           .catch(error => {
             console.log("error: ", error.message);
-            dispatch({
-              type: SIGNUP_FAIL
-            })
+            // dispatch({
+            //   type: SIGNUP_FAIL
+            // })
             reject(error.response);
           })
       }

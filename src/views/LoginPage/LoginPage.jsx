@@ -91,6 +91,7 @@ class LoginPage extends React.Component {
     }
     this.props.actions.loginRequest(data).then((response) => {
       console.log("RESPONSE DATA ", response)
+      this.props.history.push('/dashboard')
     }, (error) => {
       console.log(error)
     });

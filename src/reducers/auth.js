@@ -47,14 +47,15 @@ const auth_reducer = (state = initialState.auth, action) => {
     case LOGIN_SUCCESS:
       console.log(LOGIN_SUCCESS);
       console.log(action.data, "============Action data===========")
-      localStorage.setItem('auth_token', action.data.token);
-      // return Object.assign(
-      //   {},
-      //   state,
-      //   {
-      //     token: action.data.token
-      //   }
-      // );
+      localStorage.setItem('access_token', action.data.data.token);
+      return Object.assign(
+        {},
+        state,
+        {
+          token: action.data.data.token,
+          user: action.data.data
+        }
+      );
     // fail
     case LOGIN_FAIL:
       console.log(LOGIN_FAIL);

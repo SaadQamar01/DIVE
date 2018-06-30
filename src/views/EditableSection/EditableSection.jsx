@@ -20,6 +20,9 @@ import profile from "assets/img/faces/christian.png";
 import degree from "assets/img/degree.png";
 import experience from "assets/img/experience.png";
 import Microsoft from "assets/img/Microsoft.png";
+import { connect } from 'react-redux'; //to pass functions
+import { bindActionCreators } from 'redux';
+import { getUser } from '../../actions'
 
 
 // import BigCalendar from 'react-big-calendar'
@@ -66,9 +69,13 @@ class EditableSection extends React.Component {
             skills: false,
             referals: false,
             jobs: false,
-            
+
         }
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentWillMount() {
+        console.log(this.props.allUserData,"DATA from props")
     }
 
     handleChange(date) {
@@ -167,7 +174,7 @@ class EditableSection extends React.Component {
                                                     <div style={{ flex: 1, maxWidth: '50px' }}>
                                                         Agenda <ExpandMoreIcon />
                                                     </div>
- {/* <BigCalendar
+                                                    {/* <BigCalendar
     
     step={60}
     showMultiDayTimes
@@ -539,4 +546,24 @@ EditableSection.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EditableSection);
+
+function mapStateToProps(state) {
+    //pass the providers
+    console.log(state, "STATE in DASHBOARD")
+    return {
+        user: state.auth.user,
+        token: state.auth.token
+    }
+}
+
+/* Map Actions to Props */
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators({
+            getUser
+        }, dispatch)
+    };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EditableSection));

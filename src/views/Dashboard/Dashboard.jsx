@@ -16,8 +16,32 @@ import mainRoutes from "../../routes/mainRoutes.jsx";
 import profilePageStyle from "../../assets/jss/material-kit-react/views/profilePage.jsx";
 import EditableSection from '../EditableSection/EditableSection';
 import Platform from 'react-platform-js'
+import { connect } from 'react-redux'; //to pass functions
+import { bindActionCreators } from 'redux';
+import { getUser } from '../../actions'
 
 class Dashboard extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            userData: null
+        }
+    }
+
+    componentWillMount() {
+        this.props.actions.getUser({ 'x-access-token': this.props.token }, this.props.user._id).then((response) => {
+            console.log(response, "DATA FOR SPECDIFIC USER")
+            this.setState =( {
+                userData : response.data
+                        },()=>{
+                            console.log(this.state.userData,"USER DATA IN STATE")
+                        })
+        }, (error) => {
+            console.log(error, "ERROR TO GET USER DATA")
+        })
+    }
+
     render() {
         const { classes, ...rest } = this.props;
         const imageClasses = classNames(
@@ -60,16 +84,16 @@ class Dashboard extends React.Component {
                                             <i className={"fab fa-google-plus"} />
                                         </Button>
                                     </div>
-                                        <Button style={{ backgroundColor: '#fff', color: '#000' }} onClick={() => this.props.history.push('/dashboard')}>Profile</Button>
-                                        <Link to={"/dashboard/portfolio"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Portfolio</Button></Link>
-                                        <Link to={"/dashboard/connections"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Connections</Button></Link>
-                                        <Link to={"/dashboard/discover"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Discover</Button></Link>
+                                    <Button style={{ backgroundColor: '#fff', color: '#000' }} onClick={() => this.props.history.push('/dashboard')}>Profile</Button>
+                                    <Link to={"/dashboard/portfolio"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Portfolio</Button></Link>
+                                    <Link to={"/dashboard/connections"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Connections</Button></Link>
+                                    <Link to={"/dashboard/discover"} ><Button style={{ backgroundColor: '#fff', color: '#000' }}>Discover</Button></Link>
                                 </div>
                             </GridItem>
                         </GridContainer>
                         <GridContainer>
                             <GridItem sm={12} xs={12} md={4}>
-                                <EditableSection />
+                                <EditableSection allUserData ={this.state.userData} />
                             </GridItem>
                             <GridItem sm={12} xs={12} md={8} >
                                 {mainRoutes.map((prop, key) => {
@@ -90,4 +114,22 @@ class Dashboard extends React.Component {
     }
 }
 
-export default withRouter(withStyles(profilePageStyle)(Dashboard));
+function mapStateToProps(state) {
+    //pass the providers
+    console.log(state, "STATE in DASHBOARD")
+    return {
+        user: state.auth.user,
+        token: state.auth.token
+    }
+}
+
+/* Map Actions to Props */
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators({
+            getUser
+        }, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(profilePageStyle)(Dashboard));
